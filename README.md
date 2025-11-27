@@ -22,4 +22,4 @@
 
   Data is fetched from `api/dashboard.json`.
 
-  Chart.js is used for MTTR history; and for all other elements I use plain HTML, CSS, and JS.
+  Chart.js is used for MTTR history; and for all other elements use plain HTML, CSS, and JS.
