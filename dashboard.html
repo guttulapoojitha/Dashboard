@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple Dashboard</title>
+
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+    <header>
+        <h1 id="siteName">Dashboard</h1>
+        <p id="date"></p>
+    </header>
+
+    <section class="kpi-container">
+        <div class="kpi-card">Total Tickets: <span id="totalTickets"></span></div>
+        <div class="kpi-card">Open Tickets: <span id="openTickets"></span></div>
+        <div class="kpi-card">Avg Resolution Time: <span id="avgResolution"></span></div>
+        <div class="kpi-card">MTTR: <span id="mttr"></span></div>
+        <div class="kpi-card">Uptime: <span id="uptime"></span>%</div>
+    </section>
+
+    <section>
+        <h2>Open Tickets by Department</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Department</th>
+                    <th>Count</th>
+                </tr>
+            </thead>
+            <tbody id="deptTable"></tbody>
+        </table>
+    </section>
+
+    <section>
+        <h2>Fuel Consumption</h2>
+        <div class="fuel-bar">
+            <div id="fuelFill"></div>
+        </div>
+        <p><span id="fuelUsed"></span> / <span id="fuelCapacity"></span> L</p>
+    </section>
+
+    <section>
+        <h2>MTTR History</h2>
+        <svg id="mttrSvg" width="100%" height="180"></svg>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
