@@ -54,6 +54,11 @@ table th {
     border-radius: 6px;
 }
 
+#mttrChart {
+    width: 50% !important;   
+    height: 400px !important;
+}
+
 @media (max-width: 600px) {
     .kpi-container {
         flex-direction: column;

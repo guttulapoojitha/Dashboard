@@ -24,29 +24,29 @@ async function loadDashboard() {
         document.getElementById("fuelUsed").textContent = data.fuel.fuel_consumed_liters;
         document.getElementById("fuelCapacity").textContent = data.fuel.fuel_capacity_liters;
 
-        const svg = document.getElementById("mttrSvg");
-        const maxValue = Math.max(...data.mttr_history.map(i => i.mttr));
-        const barWidth = 35;
-        const gap = 10;
 
-        data.mttr_history.forEach((item, index) => {
-            const height = (item.mttr / maxValue) * 150;
-            const x = index * (barWidth + gap) + 10;
+        const chartbar = document.getElementById("mttrChart").getContext("2d");
 
-            const rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
-            rect.setAttribute("x", x);
-            rect.setAttribute("y", 160 - height);
-            rect.setAttribute("width", barWidth);
-            rect.setAttribute("height", height);
-            rect.setAttribute("fill", "#4a90e2");
-            svg.appendChild(rect);
+        const labels = data.mttr_history.map(item => item.date.slice(5));
+        const values = data.mttr_history.map(item => item.mttr);
 
-            const label = document.createElementNS("http://www.w3.org/2000/svg", "text");
-            label.setAttribute("x", x + 5);
-            label.setAttribute("y", 175);
-            label.setAttribute("font-size", "10");
-            label.textContent = item.date.slice(5);
-            svg.appendChild(label);
+        new Chart(chartbar, {
+            type: "bar",
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: "MTTR (hours)",
+                    data: values,
+                    backgroundColor: "rgba(31, 95, 244, 0.6)"
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: { beginAtZero: true },
+                    x: { ticks: { color: "#000" } }
+                }
+            }
         });
 
     } catch (err) {
